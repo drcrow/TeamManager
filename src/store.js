@@ -41,6 +41,22 @@ const reducer = (state = initialState, action) => {
         }
     }
 
+    if( action.type === "REMOVE_REGULAR" ){
+        return {
+            ...state,
+            players: state.players.concat( action.player ),
+            regularPlayers: state.regularPlayers.filter( j => j.id !== action.player.id )
+        }
+    }
+
+    if( action.type === "REMOVE_SUBSTITUTE" ){
+        return {
+            ...state,
+            players: state.players.concat( action.player ),
+            substitutePlayers: state.substitutePlayers.filter( j => j.id !== action.player.id )
+        }
+    }
+
     return state;
 }
 

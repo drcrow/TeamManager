@@ -2,22 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 
 const RegularPlayers = ({regularPlayers, removeRegular}) => (
-    <section>
-        <h2>Regular Players</h2>
-        <div className="regulars">
+    <div>
+        <div className="row">
+            <h2>Regular Players</h2>
+        </div>
+        <div className="row">
         {
-                regularPlayers.map(j => (
-                    <article className="regular" key={ j.id }>
-                        <img src={ j.pic } alt={ j.name } />
-                        <h3>{ j.name }</h3>
-                        <div>
-                            <button onClick={ () => removeRegular(j) }>Remove</button>
+            regularPlayers.map(j => (
+                <div className="col-md-3" key={ j.id }>
+                    <div className="card">
+                        <img src={ j.pic } alt={ j.name } className="card-img-top" />
+                        <div className="card-body">
+                            <h4>{ j.name }</h4>
+                            <button onClick={ () => removeRegular(j) } className="btn btn-primary">Remove</button>
                         </div>
-                    </article>
-                ))
+                    </div>
+                </div>
+            ))
             }
         </div>
-    </section>
+    </div>
 )
 
 const mapStateToProps = state => ({

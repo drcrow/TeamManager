@@ -2,23 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 
 const Players = ({ players, addRegular, addSubstitute }) => (
-    <section>
-        <h2>Players</h2>
-        <div className="players-container">
-            {
-                players.map(j => (
-                    <article className="player" key={ j.id }>
-                        <img src={ j.pic } alt={ j.name } />
-                        <h3>{ j.name }</h3>
-                        <div>
-                            <button onClick={ () => addRegular(j) }>Regular</button>
-                            <button onClick={ () => addSubstitute(j) }>Substitute</button>
-                        </div>
-                    </article>
-                ))
-            }
+    <div>
+        <div className="row">
+            <h2>Players</h2>
         </div>
-    </section>
+        <div className="row">
+                {
+                    players.map(j => (
+                        <div className="col-md-3" key={ j.id }>
+                            <div className="card">
+                                <img src={ j.pic } alt={ j.name } className="card-img-top" />
+                                <div className="card-body">
+                                    <h4>{ j.name }</h4>
+                                    <button className="btn btn-primary" onClick={ () => addRegular(j) }>Regular</button>
+                                    &nbsp;
+                                    <button className="btn btn-primary" onClick={ () => addSubstitute(j) }>Substitute</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+        </div>
+    </div>
 )
 
 const mapStateToProps = state => ({
